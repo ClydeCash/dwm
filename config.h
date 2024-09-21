@@ -20,30 +20,30 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const char *fonts[]          = { "sans:size=10:antialias=true:autohint=true",
 					"Noto Color Emoji:pixelsize=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "sans:size=10:antialias=true:autohint=true";
-static const char col_gray1[]       = "#232323";
-static const char col_gray2[]       = "#636363";
-static const char col_gray3[]       = "#f0f0f0";
-static const char col_gray4[]       = "#232323";
-static const char col_cyan[]        = "#926BFF";
+static const char fgcolor[]         = "#f0f0f0";
+static const char bgcolor[]         = "#232323";
+static const char bordercolor[]     = "#636363";
 static const char col_borderbar[]   = "#636363";
+static const char selfgcolor[]      = "#232323";
+static const char selbgcolor[]      = "#9871ff";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-	[SchemeStatus]  = { col_gray3, col_gray1,  "#000000"  },
-	[SchemeTagsSel]  = { col_gray4, col_cyan,  "#000000"  },
-	[SchemeTagsNorm]  = { col_gray3, col_gray1,  "#000000"  },
-	[SchemeInfoSel]  = { col_gray3, col_gray1,  "#000000"  },
-	[SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  },
+	/*                    fg                bg              border      */
+	[SchemeNorm] 	  = { fgcolor,		bgcolor,	bordercolor },
+	[SchemeSel]  	  = { selfgcolor,	selbgcolor,	selbgcolor  },
+	[SchemeStatus]    = { fgcolor,		bgcolor,	"#000000"   },
+	[SchemeTagsSel]   = { selfgcolor,	selbgcolor,	"#000000"   },
+	[SchemeTagsNorm]  = { fgcolor,		bgcolor,	"#000000"   },
+	[SchemeInfoSel]   = { fgcolor,		bgcolor,	"#000000"   },
+	[SchemeInfoNorm]  = { fgcolor,		bgcolor,	"#000000"   },
 };
 
 typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[] = {"keepassxc", NULL };
+const char *spcmd1[]    = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[]    = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
+const char *spcmd3[]    = {"keepassxc", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
@@ -60,7 +60,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           	0,         1,          0,           0,        -1 },
+	{ "Gimp",    NULL,     NULL,           	0,         0,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           	1 << 8,    0,          0,          -1,        -1 },
 	{ "St",      NULL,     NULL,           	0,         0,          1,           0,        -1 },
 	{ "Gcolor3", NULL,     NULL,           	0,         1,          0,           0,        -1 },
@@ -70,9 +70,9 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const float mfact        = 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster        = 1;    /* number of clients in master area */
+static const int resizehints    = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
@@ -80,12 +80,12 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	{ "[1]", bstackhoriz },
-	{ "[2]", bstack },
-	{ "[3]", tile },
-	{ "[4]", spiral },
-	{ "[5]", grid },
-	{ "[F]", NULL },
-	{  NULL, NULL },
+	{ "[2]", bstack      },
+	{ "[3]", tile        },
+	{ "[4]", spiral      },
+	{ "[5]", grid        },
+	{ "[F]", NULL        },
+	{  NULL, NULL        },
 };
 
 /* key definitions */
@@ -102,8 +102,8 @@ static const Layout layouts[] = {
 #define STATUSBAR "dwmblocks"
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static char dmenumon[2]       = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", bgcolor, "-nf", fgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 #include "shiftview.c"
@@ -171,6 +171,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_r,	XK_s,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
 	{ MODKEY,		XK_r,	XK_a,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "pulsemixer", NULL } } },
 	{ MODKEY,		XK_r,	XK_o,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "calcurse", NULL } } },
+	{ MODKEY,		XK_r,	XK_g,		spawn,		{.v = (const char*[]){ "ggimp", NULL } } },
 
 	/* Volume Controls */
         { MODKEY,		-1,	XK_minus,	spawn,		SHCMD("pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -1%; kill -38 $(pidof dwmblocks)") },
