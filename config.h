@@ -21,10 +21,10 @@ static const char *fonts[]          = { "sans:size=10:antialias=true:autohint=tr
 					"Noto Color Emoji:pixelsize=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "sans:size=10:antialias=true:autohint=true";
 static const char fgcolor[]         = "#f0f0f0";
-static const char bgcolor[]         = "#232323";
-static const char bordercolor[]     = "#636363";
-static const char col_borderbar[]   = "#636363";
-static const char selfgcolor[]      = "#232323";
+static const char bgcolor[]         = "#212121";
+static const char bordercolor[]     = "#616161";
+static const char col_borderbar[]   = "#616161";
+static const char selfgcolor[]      = "#212121";
 static const char selbgcolor[]      = "#9871ff";
 static const char *colors[][3]      = {
 	/*                    fg                bg              border      */
@@ -73,7 +73,7 @@ static const Rule rules[] = {
 static const float mfact        = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster        = 1;    /* number of clients in master area */
 static const int resizehints    = 0;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
