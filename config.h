@@ -41,12 +41,12 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[]    = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd1[]    = {"st", "-n", "spvim", "-g", "120x34", "-e", "nvim", NULL };
 const char *spcmd2[]    = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
 const char *spcmd3[]    = {"keepassxc", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
-	{"spterm",      spcmd1},
+	{"spvim",      spcmd1},
 	{"spranger",    spcmd2},
 	{"keepassxc",   spcmd3},
 };
@@ -65,7 +65,7 @@ static const Rule rules[] = {
 	{ "St",      NULL,     NULL,           	0,         0,          1,           0,        -1 },
 	{ "Gcolor3", NULL,     NULL,           	0,         1,          0,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 	0,         0,          0,           1,        -1 }, /* xev */
-	{ NULL,      "spterm", NULL,		SPTAG(0),  1,          1,           1,        -1 }, 
+	{ NULL,      "spvim", NULL,		SPTAG(0),  1,          1,           1,        -1 }, 
 	{ NULL,      "spfm",   NULL, 		SPTAG(1),  1,          1,           1,        -1 }, 
 };
 
