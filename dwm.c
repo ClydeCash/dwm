@@ -212,6 +212,7 @@ static void propertynotify(XEvent *e);
 static void quit(const Arg *arg);
 static Monitor *recttomon(int x, int y, int w, int h);
 static void resetmfact(const Arg *arg);
+static void resetnmaster(const Arg *arg);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
 static void resizeclient(Client *c, int x, int y, int w, int h);
 static void resizemouse(const Arg *arg);
@@ -1568,6 +1569,13 @@ resetmfact(const Arg *arg)
 	Arg default_mfact = {.f = mfact + 1};
 
 	setmfact(&default_mfact);
+}
+
+void
+resetnmaster(const Arg *arg)
+{
+	selmon->nmaster = selmon->pertag->nmasters[selmon->pertag->curtag] = 1;
+	arrange(selmon);
 }
 
 void

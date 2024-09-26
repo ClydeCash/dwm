@@ -43,12 +43,11 @@ typedef struct {
 } Sp;
 const char *spcmd1[]    = {"st", "-n", "spvim", "-g", "120x34", "-e", "nvim", NULL };
 const char *spcmd2[]    = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[]    = {"keepassxc", NULL };
+
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spvim",      spcmd1},
 	{"spranger",    spcmd2},
-	{"keepassxc",   spcmd3},
 };
 
 /* tagging */
@@ -116,7 +115,7 @@ static const Key keys[] = {
 	{ MODKEY,		-1,	XK_k,			focusstack,	{.i = -1 } },
 	{ MODKEY,		-1,	XK_bracketleft,		setmfact,	{.f = -0.05} },
 	{ MODKEY,		-1,	XK_bracketright,	setmfact,	{.f = +0.05} },
-	{ MODKEY,		XK_l,	XK_r,			resetmfact,	{0} },
+	{ MODKEY,		-1,	XK_backslash,		resetmfact,	{0} },
 	{ MODKEY,		-1,	XK_Up,			cyclelayout,	{ .i =  1 } },
 	{ MODKEY,		-1,	XK_Down,		cyclelayout,	{ .i = -1 } },
 	{ MODKEY,		-1,	XK_Right,		shiftview,	{ .i =  1 } },
@@ -136,6 +135,7 @@ static const Key keys[] = {
 	{ MODKEY,		-1,	XK_Return,		zoom,		{0} },
      	{ MODKEY,		-1,	XK_i,			incnmaster,	{.i = +1 } },
      	{ MODKEY,		-1,	XK_u,			incnmaster,	{.i = -1 } },
+     	{ MODKEY,		-1,	XK_o,			resetnmaster,	{0} },
 
         /* Tags */
 	TAGKEYS(		-1,	XK_1,		0)
@@ -167,7 +167,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_r,	XK_e,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "vim", NULL } } },
 	{ MODKEY,		XK_r,	XK_s,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
 	{ MODKEY,		XK_r,	XK_a,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "pulsemixer", NULL } } },
-	{ MODKEY,		XK_r,	XK_o,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "calcurse", NULL } } },
+	{ MODKEY,		XK_r,	XK_c,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "calcurse", NULL } } },
 	{ MODKEY,		XK_r,	XK_g,		spawn,		{.v = (const char*[]){ "ggimp", NULL } } },
 
 	/* Volume Controls */
