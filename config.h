@@ -42,7 +42,7 @@ typedef struct {
 	const void *cmd;
 } Sp;
 const char *spcmd1[]    = {"st", "-n", "spvim", "-g", "120x34", "-e", "nvim", NULL };
-const char *spcmd2[]    = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
+const char *spcmd2[]    = {"st", "-n", "spfm", "-g", "144x41", "-e", "lfub", NULL };
 
 static Sp scratchpads[] = {
 	/* name          cmd  */
@@ -163,7 +163,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_p,	XK_2,		togglescratch,	{.ui = 1 } },
 	{ MODKEY,		XK_r,	XK_t,		spawn,		{.v = termcmd } },
 	{ MODKEY,		XK_r,	XK_b,		spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
-	{ MODKEY,		XK_r,	XK_f,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ranger", NULL } } },
+	{ MODKEY,		XK_r,	XK_f,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
 	{ MODKEY,		XK_r,	XK_e,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "vim", NULL } } },
 	{ MODKEY,		XK_r,	XK_s,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
 	{ MODKEY,		XK_r,	XK_a,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "pulsemixer", NULL } } },
