@@ -132,6 +132,8 @@ static const Key keys[] = {
 	{ MODKEY,		-1,	XK_q,			killclient,	{0} },
 	{ MODKEY,		XK_z,	XK_r,			quit,		{1} },
 	{ MODKEY,		XK_z,	XK_q,			quit,		{0} },
+	{ MODKEY,		XK_x,	XK_r,			spawn,		SHCMD("dwm-reboot") },
+	{ MODKEY,		XK_x,	XK_s,			spawn,		SHCMD("dwm-shutdown") },
 	{ MODKEY,		-1,	XK_Return,		zoom,		{0} },
      	{ MODKEY,		-1,	XK_i,			incnmaster,	{.i = +1 } },
      	{ MODKEY,		-1,	XK_u,			incnmaster,	{.i = -1 } },
@@ -171,9 +173,9 @@ static const Key keys[] = {
 	{ MODKEY,		XK_r,	XK_g,		spawn,		{.v = (const char*[]){ "ggimp", NULL } } },
 
 	/* Volume Controls */
-        { MODKEY,		-1,	XK_minus,	spawn,		SHCMD("pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -1%; kill -38 $(pidof dwmblocks)") },
-     	{ MODKEY,		-1,	XK_equal,	spawn,		SHCMD("pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +1%; kill -38 $(pidof dwmblocks)" ) },
-     	{ MODKEY,		-1,	XK_m,		spawn,		SHCMD("pactl set-sink-mute 0 toggle; kill -38 $(pidof dwmblocks)") },
+        { MODKEY,		-1,	XK_minus,	spawn,		SHCMD("pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -1%; kill -39 $(pidof dwmblocks)") },
+     	{ MODKEY,		-1,	XK_equal,	spawn,		SHCMD("pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +1%; kill -39 $(pidof dwmblocks)" ) },
+     	{ MODKEY,		-1,	XK_m,		spawn,		SHCMD("pactl set-sink-mute 0 toggle; kill -39 $(pidof dwmblocks)") },
 
 	/* Print Screen */
 	{ 0,			-1,	XK_Print,	spawn,		SHCMD("maim -m 10 | xclip -selection clipboard -t image/png") },
