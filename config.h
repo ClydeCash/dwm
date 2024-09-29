@@ -170,7 +170,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_r,	XK_s,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
 	{ MODKEY,		XK_r,	XK_a,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "pulsemixer", NULL } } },
 	{ MODKEY,		XK_r,	XK_c,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "calcurse", NULL } } },
-	{ MODKEY,		XK_r,	XK_g,		spawn,		{.v = (const char*[]){ "ggimp", NULL } } },
+	{ MODKEY,		XK_r,	XK_g,		spawn,		{.v = (const char*[]){ "gimp", NULL } } },
 
 	/* Volume Controls */
         { MODKEY,		-1,	XK_minus,	spawn,		SHCMD("pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -1%; kill -39 $(pidof dwmblocks)") },
